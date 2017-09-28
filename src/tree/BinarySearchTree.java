@@ -13,32 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sort.test;
+package tree;
 
 
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
-import sort.AbstractSort;
-import sort.distribution.DoubleBucketSort;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 /**
  * @author Jinho D. Choi ({@code jinho.choi@emory.edu})
  */
-public class DoubleBucketSortTest
+public class BinarySearchTree<T extends Comparable<T>> extends AbstractBinarySearchTree<T,BinaryNode<T>>
 {
-    @Test
-    void test()
+    /**
+     * @param key the key of this node.
+     * @return a binary node with the specific key.
+     */
+    @Override
+    public BinaryNode<T> createNode(T key)
     {
-        Double[] original = {.32, .25, .51, .44, .21, .31, .17, .52};
-        Double[] sorted = Arrays.copyOf(original, original.length);
-        
-        AbstractSort<Double> s = new DoubleBucketSort(0, 1);
-        s.sort(original);
-        Arrays.sort(sorted);
-
-        assertArrayEquals(original, sorted);
+        return new BinaryNode<T>(key);
     }
 }
