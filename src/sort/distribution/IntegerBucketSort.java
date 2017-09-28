@@ -36,7 +36,7 @@ public class IntegerBucketSort extends BucketSort<Integer>
 	public IntegerBucketSort(int min, int max, Comparator<Integer> comparator)
 	{
 		super(max - min, false, comparator);
-		GAP = -min;
+		GAP = -min; //max - min + 1 is the number of  buckets you need
 	}
 	
 	@Override

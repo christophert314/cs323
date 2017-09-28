@@ -74,7 +74,7 @@ public class SortTest
 		}
 	}
 	
-//	@Test
+	@Test
 	@SuppressWarnings("unchecked")
 	public void compareSpeeds()
 	{
