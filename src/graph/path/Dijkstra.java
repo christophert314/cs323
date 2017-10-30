@@ -13,28 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package trie.autocomplete;
+package graph.path;
 
-import java.util.List;
 
 /**
  * @author Jinho D. Choi ({@code jinho.choi@emory.edu})
  */
-public interface IAutocomplete<T>
+public class Dijkstra extends AStar
 {
-    /**
-     * @param prefix the prefix of candidate words to return.
-     * @return the list of candidate words for the specific prefix.
+    /*
+     * Dijkstra's algorithm is a more specific A* algorithm with the heuristic of 0
      */
-    List<String> getCandidates(String prefix);
-    
-    /**
-     * Memorize the specific candidate word for the specific prefix.
-     * @param prefix the prefix.
-     * @param candidate the selected candidate for the prefix.
-     */
-    void pickCandidate(String prefix, String candidate);
-    
-    /** @return the previously inserted value if the key already exists; otherwise, the new value. */
-    T put(String key, T value);
+    @Override
+    protected double heuristic(int source, int target)
+    {
+        return 0;
+    }
 }

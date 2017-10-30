@@ -13,28 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package trie.autocomplete;
+package graph.flow;
 
-import java.util.List;
+import graph.Graph;
 
 /**
  * @author Jinho D. Choi ({@code jinho.choi@emory.edu})
  */
-public interface IAutocomplete<T>
+public abstract class MFAlgorithm
 {
     /**
-     * @param prefix the prefix of candidate words to return.
-     * @return the list of candidate words for the specific prefix.
+     * @param graph a graph.
+     * @param source the source vertex.
+     * @param target the target vertex.
+     * @return the maximum flow from the source to the target vertices.
      */
-    List<String> getCandidates(String prefix);
-    
-    /**
-     * Memorize the specific candidate word for the specific prefix.
-     * @param prefix the prefix.
-     * @param candidate the selected candidate for the prefix.
-     */
-    void pickCandidate(String prefix, String candidate);
-    
-    /** @return the previously inserted value if the key already exists; otherwise, the new value. */
-    T put(String key, T value);
+    public abstract MaxFlow getMaximumFlow(Graph graph, int source, int target);
 }

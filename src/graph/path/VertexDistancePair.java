@@ -1,5 +1,5 @@
 /**
- * Copyright 2014, Emory University
+ * Copyright 2015, Emory University
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,36 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package trie.autocomplete;
-
-import trie.Trie;
-
-import java.util.ArrayList;
-import java.util.List;
-
+package graph.path;
 
 /**
  * @author Jinho D. Choi ({@code jinho.choi@emory.edu})
  */
-public class DummyAutocomplete extends Trie<List<String>> implements IAutocomplete<List<String>>
+public class VertexDistancePair implements Comparable<VertexDistancePair>
 {
-    @Override
-    public List<String> getCandidates(String prefix)
+    public int    vertex;
+    public double distance;
+    
+    public VertexDistancePair(int vertex, double distance)
     {
-        // TODO must be modified
-        List<String> list = new ArrayList<>();
-        
-        list.add("These");
-        list.add("are");
-        list.add("dummy");
-        list.add("candidates");
-        
-        return list;
+        this.vertex = vertex;
+        this.distance = distance;
     }
 
     @Override
-    public void pickCandidate(String prefix, String candidate)
+    public int compareTo(VertexDistancePair p)
     {
-        // TODO must be filled
+        double diff = this.distance - p.distance;
+        if (diff > 0) return  1;
+        if (diff < 0) return -1;
+        return 0;
     }
 }

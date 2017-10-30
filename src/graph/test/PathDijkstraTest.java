@@ -13,28 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package trie.autocomplete;
+package graph.test;
 
-import java.util.List;
+
+import graph.Graph;
+import graph.path.Dijkstra;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Jinho D. Choi ({@code jinho.choi@emory.edu})
  */
-public interface IAutocomplete<T>
+public class PathDijkstraTest
 {
-    /**
-     * @param prefix the prefix of candidate words to return.
-     * @return the list of candidate words for the specific prefix.
-     */
-    List<String> getCandidates(String prefix);
-    
-    /**
-     * Memorize the specific candidate word for the specific prefix.
-     * @param prefix the prefix.
-     * @param candidate the selected candidate for the prefix.
-     */
-    void pickCandidate(String prefix, String candidate);
-    
-    /** @return the previously inserted value if the key already exists; otherwise, the new value. */
-    T put(String key, T value);
+    @Test
+    public void test()
+    {
+        Dijkstra d = new Dijkstra();
+        Graph g = new Graph(6);
+        
+        g.setDirectedEdge(0, 1, 4);
+        g.setDirectedEdge(0, 2, 2);
+        g.setDirectedEdge(1, 2, 5);
+        g.setDirectedEdge(1, 3, 10);
+        g.setDirectedEdge(2, 4, 3);
+        g.setDirectedEdge(3, 5, 3);
+        g.setDirectedEdge(4, 3, 4);
+        g.setDirectedEdge(4, 5, 9);
+        
+        System.out.println(d.getShortestPath(g, 0, 5));
+    }
 }

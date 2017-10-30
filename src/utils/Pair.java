@@ -13,28 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package trie.autocomplete;
-
-import java.util.List;
+package utils;
 
 /**
  * @author Jinho D. Choi ({@code jinho.choi@emory.edu})
  */
-public interface IAutocomplete<T>
+public class Pair<T1,T2>
 {
-    /**
-     * @param prefix the prefix of candidate words to return.
-     * @return the list of candidate words for the specific prefix.
-     */
-    List<String> getCandidates(String prefix);
+    public T1 fst;
+    public T2 snd;
     
-    /**
-     * Memorize the specific candidate word for the specific prefix.
-     * @param prefix the prefix.
-     * @param candidate the selected candidate for the prefix.
-     */
-    void pickCandidate(String prefix, String candidate);
-    
-    /** @return the previously inserted value if the key already exists; otherwise, the new value. */
-    T put(String key, T value);
+    public Pair(T1 fst, T2 snd)
+    {
+        this.fst = fst;
+        this.snd = snd;
+    }
 }
